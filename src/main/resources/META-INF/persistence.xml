@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence">
+    <persistence-unit name="jsf">
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://locahost:4623/jsf"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="jsf"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
+            <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/initial.sql"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
