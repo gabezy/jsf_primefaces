@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:9.4.0
+    container_name: mysql_db
+    volumes:
+      - jsf_db:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: jsf
+      MYSQL_DATABASE: jsf
+---
+volumes:
+  jsf_db:
