@@ -27,7 +27,7 @@ public abstract class GenericRepository<T, I> {
         return entityManager.merge(entity);
     }
 
-    public void remove(T entity) {
+    public void delete(T entity) {
         T managed = entity;
         if (!entityManager.contains(entity)) {
             managed = entityManager.merge(entity);
