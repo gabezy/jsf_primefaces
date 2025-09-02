@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+// Singleton
 @ApplicationScoped
 public class EntityManagerProducer {
 
@@ -17,6 +18,7 @@ public class EntityManagerProducer {
         this.factory = Persistence.createEntityManagerFactory("jsf-primefaces");
     }
 
+    // Similar to @Bean?
     @Produces
     @RequestScoped
     public EntityManager createEntityManager() {

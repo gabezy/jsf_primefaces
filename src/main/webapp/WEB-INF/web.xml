@@ -4,13 +4,43 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <display-name>jsf-primefaces</display-name>
-    
+
+    <!-- configure project's stage (Development, Production)   -->
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <!--  give more details on erros       -->
+        <param-value>Development</param-value>
+<!--        <param-value>Production</param-value>-->
+    </context-param>
+
+    <!-- Controls how often Facelets templates are refresh, 0 = always (no caching)   -->
+    <context-param>
+        <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
+        <param-value>0</param-value>
+    </context-param>
+
+    <!--  CDI Bean manager config   -->
     <resource-env-ref>
         <resource-env-ref-name>BeanManager</resource-env-ref-name>
         <resource-env-ref-type>javax.enterprise.inject.spi.BeanManager</resource-env-ref-type>
     </resource-env-ref>
-    
+
     <listener>
+        <!-- Register Weld servelet listener to bootstrap the CDI when application starts    -->
         <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
     </listener>
+
+    <!--  enable Faces Servlet   -->
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Mapping Faces Servelet to .xhmtl files   -->
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+
 </web-app>
